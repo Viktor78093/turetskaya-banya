@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Демо: скрыто от поисковиков. После продажи удалить эту строку. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Турецкая баня — хаммам и тёплый бассейн на ДОСе, Хабаровск</title>
+<meta name="description" content="Хаммам с тёплым бассейном для семьи и небольшой компании до 6 человек. Хабаровск, квартал ДОС, 10а. Ежедневно с 08:00 до 24:00 по предварительной записи.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Демо для показа владельцу. Фото и тексты из карточки «Турецкой бани» в 2ГИС.
+     Цвета сняты с их интерьера: мятные стены с арками, бирюзовая мозаика бассейна, светлый мрамор хаммама. */
+  :root {
+    --mint: #dff1ec;
+    --mint-2: #c4e6de;
+    --sea: #0e6a6c;
+    --sea-dk: #0a4c4f;
+    --marble: #f7f2ea;
+    --sand: #b98a4e;
+    --ink: #1f3433;
+    --dim: #5d7472;
+    --line: rgba(14,106,108,.18);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--marble); color: var(--ink); font: 17px/1.65 "Nunito", system-ui, sans-serif; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 16px; }
+
+  .h {
+    font-family: "Philosopher", Georgia, serif; font-weight: 700; color: var(--sea-dk);
+    font-size: clamp(32px, 4.6vw, 54px); line-height: 1.08;
+  }
+  .h i { font-weight: 400; color: var(--sand); }
+  .lead { color: #354b4a; max-width: 33em; }
+  .lead + .lead { margin-top: 1em; }
+
+  /* Восьмиконечная звезда, как в турецкой мозаике: разделитель вместо подписей над заголовками */
+  .star { width: 26px; height: 26px; color: var(--sand); margin-bottom: 18px; }
+  .orn {
+    height: 34px; color: var(--sea);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34'%3E%3Cg fill='none' stroke='%230e6a6c' stroke-width='1.3' opacity='.45'%3E%3Crect x='9' y='9' width='16' height='16'/%3E%3Crect x='9' y='9' width='16' height='16' transform='rotate(45 17 17)'/%3E%3Ccircle cx='17' cy='17' r='3'/%3E%3C/g%3E%3C/svg%3E") center / 34px repeat-x;
+  }
+
+  .logo { font-family: "Philosopher", Georgia, serif; font-weight: 700; font-size: 25px; color: var(--sea-dk); display: flex; align-items: center; gap: 10px; }
+  .logo svg { width: 22px; height: 22px; color: var(--sand); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 15px 28px; border-radius: 999px; font-weight: 800; font-size: 16px;
+    background: var(--sea); color: #fff; border: 2px solid var(--sea);
+    transition: background .2s, color .2s;
+  }
+  .btn:hover { background: var(--sea-dk); border-color: var(--sea-dk); }
+  .btn.line { background: transparent; color: var(--sea); }
+  .btn.line:hover { background: var(--sea); color: #fff; }
+
+  /* Шапка */
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  header {
+    position: fixed; inset: 0 0 auto; z-index: 20; padding: 18px 0;
+    transition: background .25s, padding .25s, box-shadow .25s;
+  }
+  header.solid, header.open { background: rgba(247,242,234,.97); padding: 11px 0; box-shadow: 0 1px 0 var(--line); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  header nav { display: flex; gap: 28px; font-weight: 700; font-size: 15px; color: var(--sea-dk); }
+  header nav a:hover { color: var(--sand); }
+  .tel { font-weight: 800; color: var(--sea-dk); }
+  .burger { display: none; width: 44px; height: 44px; border: 0; background: none; cursor: pointer; position: relative; margin-right: -10px; }
+  .burger span, .burger span::before, .burger span::after {
+    position: absolute; left: 11px; width: 22px; height: 2px; background: var(--sea-dk); content: ""; transition: transform .2s, top .2s, background .2s;
+  }
+  .burger span { top: 21px; }
+  .burger span::before { left: 0; top: -7px; }
+  .burger span::after { left: 0; top: 7px; }
+  header.open .burger span { background: transparent; }
+  header.open .burger span::before { top: 0; transform: rotate(45deg); }
+  header.open .burger span::after { top: 0; transform: rotate(-45deg); }
+
+  /* Первый экран: фото в арке, как ниши у них на стенах */
+  .hero { background: var(--mint); padding: 120px 0 70px; overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+  .hero .h { font-size: clamp(40px, 6.2vw, 76px); }
+  .hero .lead { margin-top: 22px; font-size: 19px; }
+  .hero-facts { display: flex; flex-wrap: wrap; gap: 8px 26px; margin-top: 26px; font-weight: 700; color: var(--sea-dk); }
+  .hero-facts span::before { content: "✦"; color: var(--sand); margin-right: 8px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .arch {
+    border-radius: 999px 999px 18px 18px; overflow: hidden; background: var(--mint-2) center / cover no-repeat;
+    box-shadow: 0 0 0 10px #fff, 0 0 0 11px var(--line);
+  }
+  .hero .arch { aspect-ratio: 3 / 4; max-height: 640px; justify-self: center; width: 100%; max-width: 460px; }
+
+  section.block { padding: 110px 0; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .two.rev > :first-child { order: 2; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: end; }
+  .pair .arch { aspect-ratio: 3 / 5; }
+  .pair .arch:last-child { margin-bottom: 48px; }
+  .text .lead { margin-top: 22px; }
+
+  .facts { margin-top: 30px; border-top: 1px solid var(--line); }
+  .facts div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .facts b { font-family: "Philosopher", serif; font-size: 19px; color: var(--sea); }
+  .facts span { color: #354b4a; }
+
+  /* Бассейн на бирюзовом, как их мозаика */
+  .pool { background: var(--sea-dk); color: #e6f4f1; }
+  .pool .h { color: #fff; }
+  .pool .h i { color: #e2bf8a; }
+  .pool .lead { color: #cfe6e2; }
+  .pool .facts { border-color: rgba(255,255,255,.18); }
+  .pool .facts div { border-color: rgba(255,255,255,.18); }
+  .pool .facts b { color: #e2bf8a; }
+  .pool .facts span { color: #d9ece9; }
+  .pool .wide-photo { aspect-ratio: 4 / 5; border-radius: 18px; background: #0d5b5d center / cover no-repeat; }
+  .pool .star { color: #e2bf8a; }
+  .small { margin-top: 18px; font-size: 14px; color: var(--dim); }
+  .pool .small { color: #9cc4bf; }
+
+  /* Что есть на месте */
+  .have { background: var(--mint); }
+  .have-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; align-items: start; }
+  ul.list { list-style: none; columns: 2; column-gap: 36px; margin-top: 8px; }
+  ul.list li { padding: 11px 0 11px 28px; position: relative; border-bottom: 1px solid var(--line); break-inside: avoid; }
+  ul.list li::before { content: "✦"; position: absolute; left: 2px; top: 11px; color: var(--sand); }
+  .note { margin-top: 26px; padding: 18px 22px; background: #fff; border-left: 3px solid var(--sand); border-radius: 0 12px 12px 0; color: #354b4a; }
+
+  /* Стоимость */
+  .price { text-align: center; }
+  .price .big { font-family: "Philosopher", serif; font-weight: 700; font-size: clamp(54px, 9vw, 96px); color: var(--sea); line-height: 1; margin-top: 26px; }
+  .price .big small { font-size: .38em; color: var(--sand); font-weight: 400; }
+  .price .lead { margin: 22px auto 0; }
+  .price .star { margin: 0 auto 18px; }
+  .price .btn { margin-top: 32px; }
+
+  /* Отзывы */
+  .reviews { background: #fff; }
+  .quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px; margin-top: 52px; }
+  .quotes blockquote { font-family: "Philosopher", serif; font-style: italic; font-size: 22px; line-height: 1.4; color: var(--sea-dk); padding-top: 22px; border-top: 2px solid var(--mint-2); }
+  .quotes cite { display: block; margin-top: 14px; font: 700 15px/1 "Nunito", sans-serif; color: var(--sand); font-style: normal; }
+  .reviews .src { margin-top: 46px; color: var(--dim); font-size: 15px; }
+  .reviews .src a { border-bottom: 1px solid currentColor; }
+
+  /* Запись */
+  .book { background: var(--mint); }
+  .book-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 64px; align-items: start; }
+  .book .lead { margin-top: 22px; }
+  .form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 20px; background: #fff; padding: 34px; border-radius: 22px; box-shadow: 0 0 0 1px var(--line); }
+  .form label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 700; color: var(--dim); }
+  .form .wide { grid-column: 1 / -1; }
+  .form input, .form select, .form textarea {
+    font: 600 17px/1.4 "Nunito", sans-serif; color: var(--ink);
+    background: var(--marble); border: 1.5px solid transparent; border-radius: 12px;
+    padding: 12px 14px; outline: none; width: 100%;
+  }
+  .form input:focus, .form select:focus, .form textarea:focus { border-color: var(--sea); background: #fff; }
+  .form textarea { resize: vertical; min-height: 50px; }
+  .checks { display: flex; flex-wrap: wrap; gap: 12px 26px; }
+  .checks label { flex-direction: row; align-items: center; gap: 10px; font-size: 16px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .checks input { width: 20px; height: 20px; accent-color: var(--sea); }
+  .send .btn { cursor: pointer; font-family: inherit; width: 100%; }
+  .form-note { font-size: 13px; color: var(--dim); line-height: 1.5; }
+  .form-msg { font-size: 15px; font-weight: 700; color: var(--sea); min-height: 1.4em; }
+  .form .err input, .form .err select { border-color: #c8553d; background: #fff4f1; }
+
+  /* Контакты */
+  .c-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; margin-top: 40px; align-items: start; }
+  .c-row { padding: 16px 0; border-top: 1px solid var(--line); }
+  .c-row small { display: block; color: var(--dim); font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+  .c-row div { font-size: 19px; font-weight: 700; color: var(--sea-dk); }
+  .msg { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .way { color: #354b4a; }
+  .way p + p { margin-top: 1em; }
+  .way .arch { aspect-ratio: 4 / 3; border-radius: 999px 999px 18px 18px; margin-bottom: 28px; max-width: 420px; }
+
+  footer { background: var(--sea-dk); color: #bcd9d5; padding: 30px 0 36px; font-size: 15px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  .mbar { display: none; }
+
+  @media (max-width: 900px) {
+    .burger { display: block; }
+    header nav {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; gap: 0; padding: 6px 16px 18px;
+      background: rgba(247,242,234,.99); box-shadow: 0 1px 0 var(--line); font-size: 17px;
+    }
+    header nav a { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    header nav a:last-child { border-bottom: 0; }
+    header.open nav { display: flex; }
+    .hero { padding: 96px 0 56px; }
+    .hero .wrap, .two, .have-grid, .book-grid, .c-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .two.rev > :first-child { order: 0; }
+    .hero .arch { max-width: 340px; }
+    section.block { padding: 72px 0; }
+    .pair { gap: 14px; }
+    .pair .arch:last-child { margin-bottom: 30px; }
+    .pool .wide-photo { aspect-ratio: 4 / 3; }
+    ul.list { columns: 1; }
+    .facts div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .quotes { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .form { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 12px; padding: 22px 16px; }
+    .mbar {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+      position: fixed; inset: auto 0 0; z-index: 10;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(247,242,234,.97); box-shadow: 0 -1px 0 var(--line);
+    }
+    .mbar .btn { padding: 13px 10px; font-size: 15px; }
+    body { padding-bottom: 72px; }
+  }
+  @media (max-width: 480px) {
+    .tel { display: none; }
+    .hero-actions .btn { flex: 1 1 100%; }
+    .msg .btn { flex: 1 1 100%; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="star" viewBox="0 0 24 24"><g fill="currentColor"><rect x="5" y="5" width="14" height="14"/><rect x="5" y="5" width="14" height="14" transform="rotate(45 12 12)"/></g><circle cx="12" cy="12" r="3" fill="#f7f2ea"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#"><svg><use href="#star"/></svg>Турецкая баня</a>
+    <nav>
+      <a href="#hammam">Хаммам</a>
+      <a href="#pool">Бассейн</a>
+      <a href="#price">Цены</a>
+      <a href="#book">Запись</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="tel" href="tel:+79142184191">+7 914 218-41-91</a>
+    <button class="burger" type="button" aria-label="Меню" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1 class="h">Турецкая баня <i>на ДОСе</i></h1>
+      <p class="lead">Хаммам с мягким паром и тёплый бассейн для семьи или небольшой компании. Чисто, уютно, и всё время только ваше.</p>
+      <div class="hero-facts"><span>до 6 гостей</span><span>от 1 800 ₽ в час</span><span>08:00–24:00</span></div>
+      <div class="hero-actions">
+        <a class="btn" href="#book">Записаться онлайн</a>
+        <a class="btn line" href="https://wa.me/79142184191" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      </div>
+    </div>
+    <div class="arch" style="background-image:url('https://i5.photo.2gis.com/main/branch/35/70000001082468772/common')" role="img" aria-label="Бассейн в гроте"></div>
+  </div>
+</section>
+
+<div class="orn" aria-hidden="true"></div>
+
+<section class="block" id="hammam">
+  <div class="wrap two">
+    <div class="pair">
+      <div class="arch" style="background-image:url('https://cachizer2.2gis.com/reviews-photos/560d64f6-86f1-40ec-be54-6a24a58436d9.jpg')" role="img" aria-label="Мраморные лежаки в хаммаме"></div>
+      <div class="arch" style="background-image:url('https://cachizer3.2gis.com/reviews-photos/4f586dd9-e1c0-49e3-8ffe-295acca440e9.jpg')" role="img" aria-label="Мятные стены с арочной нишей"></div>
+    </div>
+    <div class="text">
+      <svg class="star"><use href="#star"/></svg>
+      <h2 class="h">Хаммам <i>с постоянным паром</i></h2>
+      <p class="lead">Турецкая парная: влажный пар и около 50°. Жарко, но не обжигает, поэтому здесь хорошо и взрослым, и детям.</p>
+      <p class="lead">Пар подаётся всё время, лежаки с подогревом. Можно лечь, расслабиться и прогреться без спешки.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block pool" id="pool">
+  <div class="wrap two rev">
+    <div class="wide-photo" style="background-image:url('https://cachizer1.2gis.com/reviews-photos/ce4f90db-feb0-45fb-b8a7-dc694961920d.jpg')" role="img" aria-label="Бассейн с мозаикой в гроте"></div>
+    <div class="text">
+      <svg class="star"><use href="#star"/></svg>
+      <h2 class="h">Тёплый бассейн <i style="white-space:nowrap">по-настоящему</i></h2>
+      <p class="lead">Бассейн в каменном гроте с бирюзовой мозаикой. Вода тёплая и прозрачная, из него не хочется вылезать. Гости чаще всего пишут именно об этом.</p>
+      <div class="facts">
+        <div><b>Вода</b><span>тёплая, чистая, без сильного запаха хлора</span></div>
+        <div><b>Детям</b><span>надувные круги, нарукавники и игрушки для купания</span></div>
+        <div><b>После</b><span>душевые с горячей водой, полотенца и тапочки</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block have">
+  <div class="wrap have-grid">
+    <div>
+      <svg class="star"><use href="#star"/></svg>
+      <h2 class="h">Всё есть <i>на месте</i></h2>
+      <p class="lead" style="margin-top:22px">Можно приехать налегке: посуда, чай и полотенца уже ждут. Еду можно привезти с собой и разогреть.</p>
+      <p class="note">Спокойный семейный формат: приходят с детьми, отмечают дни рождения, отдыхают с коллегами после работы.</p>
+    </div>
+    <ul class="list">
+      <li>Хаммам</li>
+      <li>Тёплый бассейн</li>
+      <li>Зона отдыха со столом</li>
+      <li>Телевизор</li>
+      <li>Холодильник</li>
+      <li>Микроволновка, чайник</li>
+      <li>Посуда и чай</li>
+      <li>Массажное кресло</li>
+      <li>Полотенца и тапочки</li>
+      <li>Фен</li>
+      <li>Wi-Fi</li>
+      <li>Беседка и мангал</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block price" id="price">
+  <div class="wrap">
+    <svg class="star"><use href="#star"/></svg>
+    <h2 class="h">Стоимость</h2>
+    <div class="big">от 1 800 ₽ <small>в час</small></div>
+    <p class="lead">Компания до 6 гостей. Точную стоимость на ваш день и время подскажем при записи. Оплата наличными или переводом.</p>
+    <a class="btn" href="#book">Выбрать время</a>
+  </div>
+</section>
+
+<section class="block reviews">
+  <div class="wrap">
+    <h2 class="h">Что пишут <i>наши гости</i></h2>
+    <div class="quotes">
+      <blockquote>«Уютное и чистое помещение, где сам себе хозяин. Хаммам парной, горячий. Считайте, Турция в Хабаровске!»<cite>Яна</cite></blockquote>
+      <blockquote>«Бассейн тёплый! По-настоящему тёплый! Парная изумительная. Видно, что делают всё с душой.»<cite>Дарья</cite></blockquote>
+      <blockquote>«Уже много лет ходим в эту баню. Пар мягкий, бассейн тёплый, ценник доступный.»<cite>Елена</cite></blockquote>
+    </div>
+    <p class="src">Рейтинг 4,9 и 52 отзыва в <a href="https://2gis.ru/khabarovsk/firm/70000001082468772/tab/reviews" target="_blank" rel="noopener">2ГИС</a>. Ждём вас в гости снова и снова 🩵</p>
+  </div>
+</section>
+
+<section class="block book" id="book">
+  <div class="wrap book-grid">
+    <div>
+      <svg class="star"><use href="#star"/></svg>
+      <h2 class="h">Записаться <i>в хаммам</i></h2>
+      <p class="lead">Выберите день, время и сколько вас будет. Заявка придёт нам в WhatsApp готовым сообщением, а мы подтвердим свободное время.</p>
+      <p class="lead">Работаем ежедневно с 08:00 до 24:00 по предварительной записи.</p>
+    </div>
+
+    <form class="form" id="bookForm" novalidate>
+      <label>Дата<input type="date" name="date" required></label>
+      <label>Время
+        <select name="time" required>
+          <option value="">Выберите</option>
+          <option>08:00</option><option>09:00</option><option>10:00</option><option>11:00</option>
+          <option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option>
+          <option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option>
+          <option>20:00</option><option>21:00</option><option>22:00</option>
+        </select>
+      </label>
+      <label>Сколько часов
+        <select name="hours">
+          <option>2</option><option selected>3</option><option>4</option><option>5</option><option>6 и больше</option>
+        </select>
+      </label>
+      <label>Гостей
+        <select name="guests">
+          <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+        </select>
+      </label>
+      <div class="wide checks">
+        <label><input type="checkbox" name="kids"> Будут дети</label>
+        <label><input type="checkbox" name="party"> Отмечаем праздник</label>
+        <label><input type="checkbox" name="grill"> Беседка и мангал</label>
+      </div>
+      <label>Имя<input type="text" name="name" autocomplete="given-name" required></label>
+      <label>Телефон<input type="tel" name="phone" autocomplete="tel" placeholder="+7" required></label>
+      <label class="wide">Комментарий<textarea name="comment" rows="1" placeholder="Например: нужны нарукавники"></textarea></label>
+      <div class="wide send">
+        <button class="btn" type="submit">Отправить в WhatsApp</button>
+      </div>
+      <p class="wide form-msg" id="formMsg" role="status"></p>
+      <p class="wide form-note">Нажимая кнопку, вы соглашаетесь на обработку имени и телефона для записи. Данные уходят только администратору бани.</p>
+    </form>
+  </div>
+</section>
+
+<section class="block" id="contacts">
+  <div class="wrap">
+    <h2 class="h">Как нас <i>найти</i></h2>
+    <div class="c-grid">
+      <div>
+        <div class="c-row"><small>Адрес</small><div>Хабаровск, квартал ДОС, 10а, 1 этаж</div></div>
+        <div class="c-row"><small>Режим работы</small><div>Ежедневно с 08:00 до 24:00</div></div>
+        <div class="c-row"><small>Запись</small><div><a href="tel:+79142184191">+7 914 218-41-91</a></div></div>
+        <div class="msg">
+          <a class="btn" href="https://wa.me/79142184191" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn line" href="tel:+79142184191">Позвонить</a>
+        </div>
+      </div>
+      <div class="way">
+        <div class="arch" style="background-image:url('https://cachizer3.2gis.com/reviews-photos/81c4a7ad-db85-4431-b9f7-bce1ad0e0b9e.jpg')" role="img" aria-label="Бассейн в каменном гроте"></div>
+        <p>Микрорайон ДОС, Железнодорожный район. Ближайшая остановка «Университет правосудия», около 5 минут пешком.</p>
+        <p>Только по предварительной записи: <a href="#book" style="border-bottom:1px solid currentColor">оставьте заявку</a>, позвоните или напишите, и мы подтвердим время.</p>
+        <p style="margin-top:24px"><a class="btn line" href="https://2gis.ru/khabarovsk/firm/70000001082468772" target="_blank" rel="noopener">Маршрут в 2ГИС</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© Турецкая баня, хаммам</span>
+    <span>Хабаровск, квартал ДОС, 10а</span>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="btn" href="#book">Записаться</a>
+  <a class="btn line" href="tel:+79142184191">Позвонить</a>
+</div>
+
+<script>
+// Шапка: фон при прокрутке, меню на телефоне
+(function () {
+  const header = document.querySelector("header");
+  const burger = header.querySelector(".burger");
+  const onScroll = () => header.classList.toggle("solid", window.scrollY > 40);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  const setOpen = (v) => { header.classList.toggle("open", v); burger.setAttribute("aria-expanded", v); };
+  burger.addEventListener("click", () => setOpen(!header.classList.contains("open")));
+  // Сначала закрываем меню, потом прокручиваем: иначе плавная прокрутка в Chrome обрывается
+  header.querySelectorAll("nav a").forEach((a) => a.addEventListener("click", (e) => {
+    const target = document.querySelector(a.getAttribute("href"));
+    setOpen(false);
+    if (!target) return;
+    e.preventDefault();
+    requestAnimationFrame(() => target.scrollIntoView({ behavior: "smooth" }));
+    history.replaceState(null, "", a.getAttribute("href"));
+  }));
+})();
+</script>
+
+<script>
+// Заявка уходит администратору в WhatsApp готовым сообщением.
+// Позже можно заменить на бота, который сам принимает записи.
+(function () {
+  const WA_PHONE = "79142184191";
+
+  const form = document.getElementById("bookForm");
+  const msg = document.getElementById("formMsg");
+  const date = form.elements.date;
+  const pad = (n) => String(n).padStart(2, "0");
+  const today = new Date();
+  date.min = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const f = form.elements;
+    const required = [f.date, f.time, f.name, f.phone];
+    let ok = true;
+    required.forEach((el) => {
+      const bad = !el.value.trim() || (el === f.phone && el.value.replace(/\D/g, "").length < 10);
+      el.closest("label").classList.toggle("err", bad);
+      if (bad) ok = false;
+    });
+    if (!ok) { msg.textContent = "Заполните дату, время, имя и телефон."; return; }
+
+    const [y, m, d] = f.date.value.split("-");
+    const extras = [f.kids.checked && "будут дети", f.party.checked && "отмечаем праздник", f.grill.checked && "беседка и мангал"].filter(Boolean);
+    const text = [
+      "Здравствуйте! Хочу записаться в Турецкую баню (заявка с сайта).",
+      `Дата: ${d}.${m}.${y}, с ${f.time.value}`,
+      `Часов: ${f.hours.value}, гостей: ${f.guests.value}`,
+      extras.length ? `Дополнительно: ${extras.join(", ")}` : "",
+      `Имя: ${f.name.value.trim()}`,
+      `Телефон: ${f.phone.value.trim()}`,
+      f.comment.value.trim() ? `Комментарий: ${f.comment.value.trim()}` : "",
+    ].filter(Boolean).join("\n");
+
+    window.open(`https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+    msg.textContent = "Открываем WhatsApp, осталось нажать «Отправить».";
+  });
+})();
+</script>
+
+</body>
+</html>
